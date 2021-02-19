@@ -7,7 +7,30 @@ struct fraction
 void calc(struct fraction f);
 int main()
 {
-    struct fraction f1;
+   input();
+   return 0;
+}
+void calc(struct fraction f)
+{
+    int num,denom,i,gcd,x,y;
+    num=(f.x1*f.y2)+(f.x2*f.y1);
+    denom=(f.y1*f.y2);
+    for(i=1; i <= num && i <= denom; ++i)
+    {
+        if(num%i==0 && denom%i==0)
+        gcd = i;
+    }
+    x=num/gcd;
+    y=denom/gcd;
+    if(y==1)
+    printf("The fraction sum is=%d/%d=%d",x,y,x);
+    else
+    printf("The fraction sum is=%d/%d", num/gcd, denom/gcd);
+    
+}
+void input()
+{
+     struct fraction f1;
     printf("Enter the numerator for 1st number=");
     scanf("%d", &f1.x1);
     printf("Enter the denominator for 1st number=");
@@ -17,17 +40,4 @@ int main()
     printf("Enter the denominator 2nd number=");
     scanf("%d", &f1.y2);
     calc(f1);
-    return 0;
-}
-void calc(struct fraction f)
-{
-    int num,denom,i,gcd;
-    num=(f.x1*f.y2)+(f.x2*f.y1);
-    denom=(f.y1*f.y2);
-    for(i=1; i <= num && i <= denom; ++i)
-    {
-        if(num%i==0 && denom%i==0)
-        gcd = i;
-    }
-    printf("The fraction sum is=%d/%d", num/gcd, denom/gcd);
 }
